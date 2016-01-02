@@ -59,11 +59,19 @@
     "webpack-merge": "^0.5.1"
   },
   "dependencies": {
-    "airflux": "^0.3.0-alpha1",
+    "airflux": "^0.3.0-alpha2",
     "classnames": "^2.2.1",
+    "es6-promise": "^3.0.2",
+    "font-awesome": "^4.5.0",
+    "immutable": "^3.7.6",
+    "intl": "^1.0.1",
     "lodash": "^3.10.1",
+    "moment": "^2.10.6",
     "node-uuid": "^1.4.7",
     "react": "^0.14.5",
-    "react-dom": "^0.14.5"
-  }
+    "react-dom": "^0.14.5",
+    "react-router": "^2.0.0-rc4",
+    "whatwg-fetch": "^0.10.1"
+  },
+  "peerDependencies": {}
 }

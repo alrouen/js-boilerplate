@@ -7,7 +7,7 @@ var merge = require('webpack-merge');
 
 const TARGET = process.env.npm_lifecycle_event;
 const PATHS = {
-    app: path.join(__dirname, 'src'),
+    app: path.join(__dirname, 'app'),
     build: path.join(__dirname, 'build'),
     node_modules_dir: path.resolve(__dirname, 'node_modules'),
     test: path.join(__dirname, 'test')
@@ -16,6 +16,21 @@ const PATHS = {
 const DEV_CSP = "script-src * 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'";
 const BUILD_CSP = "script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self'";
 const CHUNKS_NAMES = ['vendor', 'manifest'];
+
+//TODO: so far airflux in vendor libs seems to brake the compilation, with this error:
+// ERROR in multi vendor, Module not found: Error: Cannot resolve module 'aiflux' in...
+const VENDOR_LIBS = [
+    'classnames',
+    'es6-promise',
+    'intl',
+    'immutable',
+    'lodash',
+    'moment',
+    'react',
+    'react-dom',
+    'react-router',
+    'whatwg-fetch'
+];
 
 const pluginsForDev = () => { return [
     new HtmlwebpackPlugin({
@@ -60,10 +75,13 @@ const pluginsForTest = () => { return [
 const commonConfig = {
     entry: {
         app: PATHS.app,
-        vendor: ['react', 'lodash']
+        vendor: VENDOR_LIBS
     },
 
     resolve: {
+        alias: {
+            'app': PATHS.app
+        },
         extensions: ['', '.js', '.jsx']
     },
 
@@ -154,11 +172,6 @@ if(TARGET === 'test' || TARGET === 'tdd') {
         entry: {}, // karma will set this
         output: {}, // karma will set this
         devtool: 'inline-source-map',
-        resolve: {
-            alias: {
-                'app': PATHS.app
-            }
-        },
         module: {
             preLoaders: [
                 {
