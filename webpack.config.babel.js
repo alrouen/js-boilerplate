@@ -20,7 +20,6 @@ const targetConfigSettings = {
     }
 };
 
-const targetConfig = targetConfigSettings[target]();
+const targetConfig = targetConfigSettings[target] ? targetConfigSettings[target]() : targetConfigSettings['start']();
 
-console.log(JSON.stringify(targetConfig, null, ' '));
 export default targetConfig;

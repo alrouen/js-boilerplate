@@ -1,5 +1,6 @@
-// Reference: http://karma-runner.github.io/0.13/config/configuration-file.html
-export default (config) => {
+import webpackConfig from './webpack.config.babel'
+
+module.exports = function(config) {
     config.set({
 
         frameworks: [
@@ -39,7 +40,7 @@ export default (config) => {
             type: 'html'
         },
         // Test webpack config
-        webpack: require('./webpack.config.babel'),
+        webpack: webpackConfig,
         // Hide webpack build information from output
         webpackMiddleware: {
             noInfo: true
