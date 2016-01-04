@@ -1,7 +1,7 @@
-import _ from 'lodash';
-import Uri from './Uri';
-import { validJson } from './HttpTransformer';
-import Quote from 'models/Quote';
+import _ from 'lodash'
+import Uri from './Uri'
+import { validJson } from './HttpTransformer'
+import Quote from 'models/Quote'
 
 const YAHOOBASEURL = appConfig.API_URL; // eslint-disable-line no-undef
 

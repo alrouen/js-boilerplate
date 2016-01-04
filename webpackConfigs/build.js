@@ -4,7 +4,8 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import HtmlwebpackPlugin from 'html-webpack-plugin'
 import webpack from 'webpack'
 import merge from 'webpack-merge'
-import {PATHS, COMMON_CONFIG, BUILD_CSP, CHUNKS_NAMES, STATIC_COPY} from '../webpack.common'
+
+import { PATHS, COMMON_CONFIG, BUILD_CSP, CHUNKS_NAMES, STATIC_COPY } from '../webpack.common'
 
 const BUILD_CONFIG = {
     output: {
@@ -36,7 +37,7 @@ const BUILD_CONFIG = {
             template: PATHS.app+'/index.html',
             title: 'JS Skeleton App'
         }),
-        new webpack.optimize.CommonsChunkPlugin({names: CHUNKS_NAMES}),
+        new webpack.optimize.CommonsChunkPlugin({ names: CHUNKS_NAMES }),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false

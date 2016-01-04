@@ -3,8 +3,9 @@ import WebpackNotifierPlugin from 'webpack-notifier'
 import HtmlwebpackPlugin from 'html-webpack-plugin'
 import webpack from 'webpack'
 import merge from 'webpack-merge'
+
 import pkg from '../package.json'
-import {PATHS, COMMON_CONFIG, DEV_CSP, CHUNKS_NAMES, STATIC_COPY } from '../webpack.common'
+import { PATHS, COMMON_CONFIG, DEV_CSP, CHUNKS_NAMES, STATIC_COPY } from '../webpack.common'
 
 const DEV_CONFIG = {
     devtool: 'eval-source-map',
