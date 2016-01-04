@@ -1,8 +1,9 @@
+import './QuoteList.scss';
 import React from 'react';
 import airflux from 'airflux';
-import * as YahooQuoteActions from 'app/stores/YahooQuoteActions';
-import YahooQuoteStore from 'app/stores/YahooQuoteStore';
-// import Quote from './Quote';
+import * as YahooQuoteActions from 'stores/YahooQuoteActions';
+import YahooQuoteStore from 'stores/YahooQuoteStore';
+import Quote from './Quote';
 
 export default class QuoteList extends airflux.FluxComponent {
     constructor( props ) {
@@ -17,19 +18,15 @@ export default class QuoteList extends airflux.FluxComponent {
     renderQuotes() {
         if ( this.state && this.state.quotes && this.state.quotes.length > 0 ) {
             return (
-                <ul>
-                    {this.state.quotes.map(( q ) => <li key={q.symbol}>{q.name}</li> ) }
-                </ul>
+                <div className="quote-list">
+                    { this.state.quotes.map(( q ) => <div key={q.symbol}><Quote quote={q}/></div> ) }
+                </div>
             );
         }
-        return <div>no quotes</div>;
+        return <div className="quote-list-empty">no quotes</div>;
     }
 
     render() {
-        return (
-            <div className="value">
-                { this.renderQuotes() }
-            </div>
-        );
+        return this.renderQuotes();
     }
 }

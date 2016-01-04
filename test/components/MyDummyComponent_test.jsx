@@ -5,12 +5,12 @@ import {
 } from 'react-addons-test-utils';
 
 import assert from 'assert';
-import MyChildComponent from 'app/components/MyChildComponent.jsx';
+import MyDummyComponent from 'app/components/MyDummyComponent.jsx';
 
-describe('MyChildComponent', () => {
+describe('MyDummyComponent', () => {
     it('renders as expected', () => {
-        const component = renderIntoDocument( <MyChildComponent /> );
+        const component = renderIntoDocument( <MyDummyComponent /> );
         const valueComponent = findRenderedDOMComponentWithClass(component, 'value');
-        assert.equal(valueComponent.textContent, 'A Simple ChildComponent');
+        assert.equal(valueComponent.textContent, 'A Simple Component');
     });
 });

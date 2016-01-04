@@ -14,7 +14,8 @@
   "rules": {
     "comma-dangle": [2, "never"],
     "space-in-parens": [2, "always", { "exceptions": ["empty", "()", "[]", "{}"] }],
-    "indent": [2, 4, { "SwitchCase": 1, "VariableDeclarator": 1 }]
+    "indent": [2, 4, { "SwitchCase": 1, "VariableDeclarator": 1 }],
+    "react/prop-types": [0]
   },
 
   "ecmaFeatures": {

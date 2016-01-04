@@ -1,3 +1,4 @@
+import './Quote.scss';
 import React from 'react';
 
 export default class Quote extends React.Component {
@@ -5,7 +6,7 @@ export default class Quote extends React.Component {
         quote: Quote,
     };
 
-    render() {
-        return <span></span>;
+    render(): Object {
+        return <div className="quote"><span className="fa fa-anchor"></span>{this.props.quote.name}</div>;
     }
 }

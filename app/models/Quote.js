@@ -1,7 +1,13 @@
-// import moment from 'moment';
-
+/* @flow */
 export default class Quote {
-    constructor( name, symbol, currency, lastTradePriceOnly, lastTradeDate ) {
+
+    name: string;
+    symbol: string;
+    currency: string;
+    lastTrade: string;
+    lastTradeDate: string;
+
+    constructor( name: string, symbol: string, currency: string, lastTradePriceOnly: string, lastTradeDate: string ) {
         this.name = name;
         this.symbol = symbol;
         this.currency = currency;

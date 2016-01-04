@@ -1,4 +1,4 @@
 import { Action } from 'airflux';
-import { QuoteApi } from 'app/api/YahooApi';
+import { QuoteApi } from 'api/YahooApi';
 
 export const loadQuotes : Action = new Action().asyncResult( QuoteApi.getQuotes ).asFunction;

@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import Uri from './Uri';
 import { validJson } from './HttpTransformer';
-import Quote from 'app/models/Quote';
+import Quote from 'models/Quote';
 
 const YAHOOBASEURL = 'http://query.yahooapis.com';
 
@@ -42,8 +42,8 @@ function quoteToModel( json ) : Array< Quote > {
     return [];
 }
 
-export const QuoteApi : Array< Quote > = {
-    getQuotes: ( quotes ) => {
+export const QuoteApi = {
+    getQuotes: ( quotes: Array< string > | string ): Array< Quote > => {
         let flattenQuotes = '';
         if ( _.isArray( quotes )) {
             flattenQuotes = quotes.map( q => `\"${q}\"` ).join( ',' );

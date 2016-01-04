@@ -24,7 +24,7 @@
             ]
           }
         ],
-        [ "typecheck" ]
+        [ "typecheck", { "disable": { "production": true }  } ]
       ]
     }
   }

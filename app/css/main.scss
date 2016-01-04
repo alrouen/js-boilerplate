@@ -1,7 +1,10 @@
-body {
-    background: cornsilk;
 
-    div {
-        color: blue;
-    }
+
+body {
+    min-width:768px;
+    button:focus {outline:0;}
+}
+
+a {
+    outline: 0;
 }

@@ -6,7 +6,7 @@
  * those manually or that the framework calls it automatically.
  */
 export default class Uri {
-    constructor( format ) {
+    constructor( format: string ) {
         const args = Array.prototype.slice.call( arguments, 1 );
 
         this.url = format.replace( /{(\d+)}/g, ( match, number ) => {
@@ -14,9 +14,9 @@ export default class Uri {
         });
     }
 
-    toString() { return this.url; }
+    toString(): string { return this.url; }
 
-    query( object ) {
+    query( object ): string {
         const args = [];
         for ( const key in object ) {
             if ({}.hasOwnProperty.call( object, key )) {

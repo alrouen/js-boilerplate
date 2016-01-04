@@ -1,3 +1,4 @@
+var CopyWebpackPlugin = requre('copy-webpack-plugin');
 var Clean = require('clean-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
@@ -79,9 +80,6 @@ const commonConfig = {
     },
 
     resolve: {
-        alias: {
-            'app': PATHS.app
-        },
         extensions: ['', '.js', '.jsx']
     },
 
@@ -93,8 +91,16 @@ const commonConfig = {
                 exclude: [PATHS.node_modules_dir],
                 loaders: ['babel'],
                 include: PATHS.app
+            },
+            {
+                test   : /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+                loader : 'file-loader'
             }
         ]
+    },
+
+    sassLoader: {
+        includePaths: [PATHS.node_modules_dir+'/font-awesome/scss']
     },
 
     // Entry accepts a path or an object of entries.
@@ -121,6 +127,9 @@ if(!TARGET || TARGET === 'start') {
             host: process.env.HOST,
             port: process.env.PORT || 8081
         },
+        resolve: {
+            root:[PATHS.app]
+        },
         module: {
             preLoaders: [
                 {
@@ -133,7 +142,7 @@ if(!TARGET || TARGET === 'start') {
                 {
                     // Test expects a RegExp! Note the slashes!
                     test: /\.s?css$/,
-                    loaders: ['style', 'css', 'sass'],
+                    loaders: ['style', 'css', 'resolve-url', 'sass?sourceMap'],
                     // Include accepts either a path or an array of paths.
                     include: PATHS.app
                 }
@@ -151,12 +160,15 @@ if(TARGET === 'build') {
             filename: '[name].[chunkhash].js',
             chunkFilename: '[chunkhash].js'
         },
+        resolve: {
+            root:[PATHS.app]
+        },
         module: {
             loaders:[
                 // Extract CSS during build
                 {
                     test: /\.s?css$/,
-                    loader: ExtractTextPlugin.extract('style', 'css', 'sass'),
+                    loader: ExtractTextPlugin.extract('style', 'css', 'resolve-url', 'sass'),
                     include: PATHS.app
                 }
             ]
@@ -170,6 +182,11 @@ if(TARGET === 'test' || TARGET === 'tdd') {
 
     module.exports = merge(commonConfig, {
         entry: {}, // karma will set this
+        resolve: {
+            alias: {
+                'app': PATHS.app
+            }
+        },
         output: {}, // karma will set this
         devtool: 'inline-source-map',
         module: {
@@ -184,7 +201,7 @@ if(TARGET === 'test' || TARGET === 'tdd') {
                 {
                     // Test expects a RegExp! Note the slashes!
                     test: /\.s?css$/,
-                    loaders: ['style', 'css', 'sass'],
+                    loaders: ['style', 'css', 'resolve-url', 'sass'],
                     // Include accepts either a path or an array of paths.
                     include: PATHS.app
                 },
