@@ -6,11 +6,9 @@ import {PATHS, DEV_CSP, COMMON_CONFIG} from '../webpack.common'
 const TEST_CONFIG = {
     entry: {}, // karma will set this
     resolve: {
-        alias: {
-            'app': PATHS.app
-        }
+        fallback: [PATHS.app]
     },
-    output: {}, // karma will set this
+    output: {},
     devtool: 'inline-source-map',
     module: {
         preLoaders: [

@@ -14,6 +14,19 @@ module.exports = function(config) {
             // Reference: https://github.com/karma-runner/karma-coverage // Output code coverage files
             'coverage'
         ],
+        // optionally, configure the reporter
+        coverageReporter: {
+            dir: 'test-results/coverage',
+            reporters: [
+                // reporters not supporting the `file` property
+                { type: 'html', subdir: 'report-html' },
+                // reporters supporting the `file` property, use `subdir` to directly
+                // output them in the `dir` directory
+                { type: 'cobertura', subdir: '.', file: 'cobertura.txt' },
+                { type: 'text', subdir: '.', file: 'text.txt' },
+                { type: 'text-summary', subdir: '.', file: 'text-summary.txt' },
+            ]
+        },
 
         files: [
             // Grab all files in the tests directory that contain _test.
@@ -35,10 +48,6 @@ module.exports = function(config) {
         singleRun: true,
         // Configure code coverage reporter
 
-        coverageReporter: {
-            dir: 'build/coverage/',
-            type: 'html'
-        },
         // Test webpack config
         webpack: webpackConfig,
         // Hide webpack build information from output

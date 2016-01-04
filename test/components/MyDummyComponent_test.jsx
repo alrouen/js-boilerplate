@@ -5,7 +5,7 @@ import {
 } from 'react-addons-test-utils';
 
 import assert from 'assert';
-import MyDummyComponent from 'app/components/MyDummyComponent.jsx';
+import MyDummyComponent from 'components/MyDummyComponent.jsx';
 
 describe('MyDummyComponent', () => {
     it('renders as expected', () => {
