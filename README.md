@@ -7,6 +7,7 @@ Js Boilerplate :
 - flow
 - eslint / nsp
 
+
 ### Dev mode
 
     > npm start
@@ -18,13 +19,17 @@ Js Boilerplate :
 ### Test mode
 
 unit test:
+
     > npm test
 
 eslint:
+
     > npm test:lint
 
 typecheck:
+
     > npm test:typecheck
 
 vulnerabilities scan for node_modules:
+
     > npm test:audit
