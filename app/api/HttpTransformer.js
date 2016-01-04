@@ -1,3 +1,4 @@
+/* @flow */
 /**
  * Checks for the status of a response. By default, fetch only reject when the
  * request completely fails to be made, not on server responses.

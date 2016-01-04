@@ -1,3 +1,4 @@
+/* @flow */
 import { Action } from 'airflux';
 import { QuoteApi } from 'api/YahooApi';
 

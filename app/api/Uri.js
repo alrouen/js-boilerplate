@@ -1,3 +1,4 @@
+/* @flow */
 /**
  * Constructs a URI.
  * The format string should have {n} that will be replaced by the nth argument.
@@ -6,6 +7,9 @@
  * those manually or that the framework calls it automatically.
  */
 export default class Uri {
+
+    url: string;
+
     constructor( format: string ) {
         const args = Array.prototype.slice.call( arguments, 1 );
 
@@ -16,7 +20,7 @@ export default class Uri {
 
     toString(): string { return this.url; }
 
-    query( object ): string {
+    query( object: Object ): string {
         const args = [];
         for ( const key in object ) {
             if ({}.hasOwnProperty.call( object, key )) {

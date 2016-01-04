@@ -1,4 +1,7 @@
+/* @flow */
+// $IgnoreFlow
 import './QuoteList.scss';
+
 import React from 'react';
 import airflux from 'airflux';
 import * as YahooQuoteActions from 'stores/YahooQuoteActions';
@@ -6,7 +9,7 @@ import YahooQuoteStore from 'stores/YahooQuoteStore';
 import Quote from './Quote';
 
 export default class QuoteList extends airflux.FluxComponent {
-    constructor( props ) {
+    constructor( props: Object ) {
         super( props, { quotes: YahooQuoteStore });
     }
 
@@ -15,7 +18,7 @@ export default class QuoteList extends airflux.FluxComponent {
         YahooQuoteActions.loadQuotes(['YHOO', 'WWW']);
     }
 
-    renderQuotes() {
+    renderQuotes(): Object{
         if ( this.state && this.state.quotes && this.state.quotes.length > 0 ) {
             return (
                 <div className="quote-list">
@@ -26,7 +29,7 @@ export default class QuoteList extends airflux.FluxComponent {
         return <div className="quote-list-empty">no quotes</div>;
     }
 
-    render() {
+    render(): Object {
         return this.renderQuotes();
     }
 }

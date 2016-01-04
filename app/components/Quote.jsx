@@ -1,3 +1,6 @@
+/* @flow */
+
+// $IgnoreFlow
 import './Quote.scss';
 import React from 'react';
 

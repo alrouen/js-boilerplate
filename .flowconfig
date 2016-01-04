@@ -3,10 +3,25 @@
 
 [include]
 ./app
+./node_modules/airflux
 
 [libs]
 ./interfaces
 
 [options]
+munge_underscores=true
+module.system=haste
+unsafe.enable_getters_and_setters=true
+module.name_mapper='^stores/\(.*\)$'     -> '<PROJECT_ROOT>/app/stores/\1'
+module.name_mapper='^api/\(.*\)$'        -> '<PROJECT_ROOT>/app/api/\1'
+module.name_mapper='^components/\(.*\)$' -> '<PROJECT_ROOT>/app/components/\1'
+module.name_mapper='^models/\(.*\)$'     -> '<PROJECT_ROOT>/app/models/\1'
+
+suppress_comment= \\(.\\|\n\\)*\\$IgnoreFlow
+suppress_comment= \\(.\\|\n\\)*\\$FlowPrototypeDecl
+suppress_comment= \\(.\\|\n\\)*\\$FlowNextGenExport
+suppress_comment= \\(.\\|\n\\)*\\$FlowComputedProperty
+
 esproposal.decorators=ignore
+esproposal.class_static_fields=ignore
 esproposal.class_instance_fields=ignore
