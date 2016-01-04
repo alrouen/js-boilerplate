@@ -1,9 +1,10 @@
 import Clean from 'clean-webpack-plugin';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import HtmlwebpackPlugin from 'html-webpack-plugin'
 import webpack from 'webpack'
 import merge from 'webpack-merge'
-import {PATHS, COMMON_CONFIG, BUILD_CSP, CHUNKS_NAMES} from '../webpack.common'
+import {PATHS, COMMON_CONFIG, BUILD_CSP, CHUNKS_NAMES, STATIC_COPY} from '../webpack.common'
 
 const BUILD_CONFIG = {
     output: {
@@ -19,13 +20,14 @@ const BUILD_CONFIG = {
             // Extract CSS during build
             {
                 test: /\.s?css$/,
-                loader: ExtractTextPlugin.extract('style', 'css', 'resolve-url', 'sass'),
+                loader: ExtractTextPlugin.extract('style', ['css', 'resolve-url', 'sass']),
                 include: PATHS.app
             }
         ]
     },
     plugins: [
         new Clean([PATHS.build]),
+        new CopyWebpackPlugin( STATIC_COPY ),
         new ExtractTextPlugin('styles.[chunkhash].css'),
         new HtmlwebpackPlugin({
             appMountId: 'app',

@@ -11,6 +11,9 @@ export const PATHS = {
 export const DEV_CSP = "script-src * 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'";
 export const BUILD_CSP = "script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' http://query.yahooapis.com";
 export const CHUNKS_NAMES = ['vendor', 'manifest'];
+export const STATIC_COPY = [
+    {from:path.join(PATHS.app, 'config'), to:'config'}
+];
 
 //TODO: so far airflux in vendor libs seems to brake the compilation, with this error:
 // ERROR in multi vendor, Module not found: Error: Cannot resolve module 'aiflux' in...
@@ -47,8 +50,12 @@ export const COMMON_CONFIG = {
                 include: PATHS.app
             },
             {
-                test   : /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-                loader : 'file'
+                test   : /\.(png|jpg|jpeg|gif|bmp)$/,
+                loader : 'file?name=images/[hash].[ext]'
+            },
+            {
+                test   : /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9-\.=]+)?$/,
+                loader : 'file?name=fonts/[hash].[ext]'
             }
         ]
     },

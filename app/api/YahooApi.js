@@ -3,7 +3,7 @@ import Uri from './Uri';
 import { validJson } from './HttpTransformer';
 import Quote from 'models/Quote';
 
-const YAHOOBASEURL = 'http://query.yahooapis.com';
+const YAHOOBASEURL = appConfig.API_URL; // eslint-disable-line no-undef
 
 // Yahoo query params for Quotes :
 // q= select * from yahoo.finance.quotes where symbol in ("YHOO","AAPL","GOOG","MSFT")
