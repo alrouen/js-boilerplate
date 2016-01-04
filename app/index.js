@@ -1,8 +1,7 @@
 function startApp() {
-    const React = require( 'react' );
     const ReactDOM = require( 'react-dom' );
     const App = require( './App' ).default;
-    ReactDOM.render( <App />, document.getElementById( 'app' ));
+    ReactDOM.render( App, document.getElementById( 'app' ));
 }
 
 require( 'es6-promise' ).polyfill();
