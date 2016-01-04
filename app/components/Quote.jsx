@@ -9,6 +9,6 @@ export default class Quote extends React.Component {
     };
 
     render(): Object {
-        return <div className="quote"><span className="fa fa-anchor"></span>{this.props.quote.name}</div>;
+        return <div className="quote"><span className="fa fa-hashtag"></span>{this.props.quote.name}</div>;
     }
 }

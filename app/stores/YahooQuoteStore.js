@@ -1,9 +1,9 @@
 /* @flow */
-import airflux from 'airflux';
+import { Store } from 'airflux';
 import * as YahooQuoteActions from 'stores/YahooQuoteActions';
 import Quote from 'models/Quote';
 
-class YahooQuoteStore extends airflux.Store {
+class YahooQuoteStore extends Store {
     constructor() {
         super();
         this.quotes = [];

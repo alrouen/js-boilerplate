@@ -1,11 +1,10 @@
 /* @flow */
-import _ from 'lodash'
-import Uri from './Uri'
-import { validJson } from './HttpTransformer'
-import Quote from 'models/Quote'
+import Uri from './Uri';
+import { validJson } from './HttpTransformer';
+import Quote from 'models/Quote';
 
 declare var appConfig: Object;
-declare function fetch(url: string): Promise<Object>;
+declare function fetch( url: string ): Promise<Object>;
 
 const YAHOOBASEURL = appConfig.API_URL; // eslint-disable-line no-undef
 

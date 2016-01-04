@@ -15,9 +15,8 @@ export const STATIC_COPY = [
     {from:path.join(PATHS.app, 'config'), to:'config'}
 ];
 
-//TODO: so far airflux in vendor libs seems to brake the compilation, with this error:
-// ERROR in multi vendor, Module not found: Error: Cannot resolve module 'aiflux' in...
 export const VENDOR_LIBS = [
+    'airflux',
     'classnames',
     'es6-promise',
     'intl',
