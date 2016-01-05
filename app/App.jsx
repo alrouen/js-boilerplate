@@ -1,7 +1,8 @@
 import './css/main.scss';
 
 import React from 'react';
-import { Router, Route, Link, hashHistory } from 'react-router';
+import { Router, Route, Link, useRouterHistory } from 'react-router';
+import { createHashHistory } from 'history';
 import QuotePage from 'components/QuotePage';
 import DummyComponent from 'components/MyDummyComponent';
 
@@ -9,6 +10,13 @@ class AppRoot extends React.Component {
 
     constructor( props ) {
         super( props );
+    }
+
+    getChildContext() {
+        return {
+            location: this.props.location,
+            route: this.props.route
+        };
     }
 
     render() {
@@ -25,8 +33,15 @@ class AppRoot extends React.Component {
     }
 }
 
+AppRoot.childContextTypes = {
+    location: React.PropTypes.object,
+    route: React.PropTypes.object
+};
+
+const appHistory = useRouterHistory( createHashHistory )({ queryKey: false });
+
 export default (
-    <Router history={hashHistory}>
+    <Router history={appHistory}>
         <Route path="/" component={AppRoot}>
             <Route path="quotes" component={QuotePage}/>
             <Route path="dummycomponent" component={DummyComponent} />

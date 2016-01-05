@@ -8,6 +8,7 @@ import * as YahooQuoteActions from 'stores/YahooQuoteActions';
 import YahooQuoteStore from 'stores/YahooQuoteStore';
 import Quote from './Quote';
 
+// $IgnoreFlow
 @FluxComponent
 export default class QuoteList extends Component {
     constructor( props: Object ) {
